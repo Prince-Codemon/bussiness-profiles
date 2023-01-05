@@ -11,7 +11,7 @@ const Header = () => {
     availability: "",
   });
   const handleSearch = (e) => {
-    dispatch({ type: "FILTER", payload: filters });
+    dispatch({ type: "FILTER", payload: filters }); 
     dispatch({ type: "SEARCH", payload: e.target.value });
   };
   const handleChange = async (e) => {
@@ -20,10 +20,10 @@ const Header = () => {
   };
   useEffect(() => {
     dispatch({ type: "FILTER", payload: filters });
-  }, [filters]);
+  }, [filters, dispatch]);
   useEffect(() => {
     dispatch({ type: "DOMAINS" });
-  }, []);
+  }, [dispatch]);
 
   return (
     <header>

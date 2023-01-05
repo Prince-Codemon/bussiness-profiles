@@ -8,7 +8,6 @@ const Team = () => {
   const { filteredData, domains } = useSelector((state) => state);
 
   useEffect(() => {
-    dispatch({ type: "DOMAINS" });
     let temp = [];
     domains?.forEach((domain) => {
       const members = filteredData.filter(
@@ -19,7 +18,10 @@ const Team = () => {
       }
     });
     setTeam(temp);
-  }, []);
+  }, [domains,dispatch, filteredData]);
+  useEffect(() => {
+    dispatch({ type: "DOMAINS" });
+    }, [dispatch])
 
   return (
     <div>
