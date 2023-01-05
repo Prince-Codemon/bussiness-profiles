@@ -1,38 +1,242 @@
-.App {
-  text-align: center;
+nav{
+
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px;
+    text-align: center;
+    font-size: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: sticky;
+    width: 100%;
+    z-index: 1;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+nav ul{
+    list-style-type: none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+nav ul li{
+    padding: 10px;
+}
+nav ul li a{
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+}
+nav ul li a:hover{
+    color:cyan;
+} 
+
+/*  */
+
+header {
+    background-image: url("https://images.unsplash.com/photo-1517436073-8b3b8f3b5f1d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
+    background: cyan;
+    background-size: cover;
+    background-position: center;
+    min-height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+   
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+   
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header .control {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  
+    text-align: center;
+    
+    margin: 10px;
+    padding: 10px;
+    
+}
+header .control input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    text-transform: capitalize;
+   
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+header .control button {
+    padding: 10px;
+    margin-left: 10px;
+  
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+   
+    text-transform: uppercase;
+    cursor: pointer;
+    background-color: #000000;
+    color: #ffffff;
+    transition: all 0.3s ease-in-out;
+}
+header .control button:hover {
+    background-color: white;
+    color: #000000;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+select {
+    padding: 10px;
+   
+    border-radius: 5px;
+    outline: none;
+  
+   cursor: pointer;
+}
+.option {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 10px;
+
+}
+
+
+
+
+
+/* ************************--------
+-----**** card css ****------
+ --------************************ */ 
+ .cardlist{
+   display:flex;
+   align-items: center;
+   justify-content: center;
+   width: 80%;
+   margin: auto;
+   flex-wrap: wrap;
+   gap: 1rem;
+   padding: 1rem 0;
+ }
+
+.card {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 250px;
+  padding: 10px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+.card:hover{
+  box-shadow: 0 4px 3px rgba(0, 0, 0, 0.2);
+  scale: 1.1;
+}
+
+.card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.card-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.card-info h2 {
+  font-size: 18px;
+  margin-bottom: 5px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.card-info p {
+  font-size: 14px;
+  margin: 0;
+  color: #666;
+}
+
+.card-info p.status {
+  font-weight: bold;
+}
+
+.card-info p.status.available {
+  color: green;
+}
+
+.card-info p.status.unavailable {
+  color: red;
+}
+
+.pagination{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap: 10px;
+  flex-wrap: wrap;
+  
+  max-width: 80%;
+  margin: 1rem auto;
+}
+.pagination button{
+  padding: 10px;
+  border-radius: 5px;
+  outline: none;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+  background-color: #000000;
+  color: #ffffff;
+  transition: all 0.3s ease-in-out;
+}
+.pagination button:hover{
+  background-color: white;
+  color: #000000;
+}
+.pagination button:disabled{
+  background-color: white;
+  color: #000000;
+  cursor: not-allowed;
+}
+
+@media screen and (min-width:320px) and (max-width:500px) {
+
+
+  .card {
+    width:80%;
   }
-  to {
-    transform: rotate(360deg);
+
+  .cardlist {
+    width: 100%;
   }
+
+  .pagination {
+    width: 100%;
+  }
+
+  .pagination button {
+    padding: 5px;
+    font-size: 10px;
+  }
+
+  .option {
+    flex-direction: column;
+    align-items: flex-start !important;
+    justify-content: flex-start;
+  }
+
 }
