@@ -5,12 +5,12 @@ import Card from "./Card";
 const Team = () => {
   const [team, setTeam] = useState([]);
   const dispatch = useDispatch();
-  const { filteredData, domains } = useSelector((state) => state);
+  const { originalData, domains } = useSelector((state) => state);
 
   useEffect(() => {
     let temp = [];
     domains?.forEach((domain) => {
-      const members = filteredData.filter(
+      const members = originalData.filter(
         (item) => item.domain === domain && item.available === true
       );
       if (members.length > 0) {
@@ -18,7 +18,7 @@ const Team = () => {
       }
     });
     setTeam(temp);
-  }, [domains,dispatch, filteredData]);
+  }, [domains,dispatch,originalData]);
   useEffect(() => {
     dispatch({ type: "DOMAINS" });
     }, [dispatch])
