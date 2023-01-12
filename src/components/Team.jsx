@@ -1,34 +1,20 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import React from "react";
+import { useSelector } from "react-redux";
 import Card from "./Card";
 const Team = () => {
-  const [team, setTeam] = useState([]);
-  const dispatch = useDispatch();
-  const { originalData, domains } = useSelector((state) => state);
+  const { team } = useSelector((state) => state);
 
-  useEffect(() => {
-    let temp = [];
-    domains?.forEach((domain) => {
-      const members = originalData.filter(
-        (item) => item.domain === domain && item.available === true
-      );
-      if (members.length > 0) {
-        temp.push(members[0]);
-      }
-    });
-    setTeam(temp);
-  }, [domains,dispatch,originalData]);
-  useEffect(() => {
-    dispatch({ type: "DOMAINS" });
-    }, [dispatch])
+  
 
   return (
     <div>
       <h1>My Team</h1>
       <div className="cardlist">
+        {
+        team.length === 0 && <h2>No member in team</h2>
+      }
         {team?.map((d, i) => (
-          <Card detail={d} key={i} />
+          <Card detail={d} key={i} addBtn={false} />
         ))}
       </div>
     </div>

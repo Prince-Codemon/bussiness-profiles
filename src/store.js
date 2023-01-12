@@ -3,6 +3,7 @@ const initialState = {
   originalData: userData,
   filteredData: userData,
   domains: [],
+  team: JSON.parse(localStorage.getItem("team")) || [],
 };
 const getDomains = () => [
   ...new Set(initialState.originalData.map((user) => user.domain)),
@@ -105,6 +106,29 @@ const reducer = (state = initialState, action) => {
         domains: getDomains(),
       };
 
+    case "ADD_TO_TEAM":
+      const user = action.payload;
+      const present =  state.team.find((u) => u.id === user.id);
+      const same = state.team.find((u) => u.domain === user.domain);
+      if (present) {
+        alert("User already added");
+        return state;
+      } else if (same) {
+        alert("You can't add more than one member from same domain");
+        return state;
+      } else {
+        return {
+          ...state,
+          team: [...state.team, user],
+        };
+      }
+
+    case "REMOVE_MEMBER":
+      const id = action.payload;
+      return {
+        ...state,
+        team: state.team.filter((user) => user.id !== id),
+      };
     default:
       return state;
   }
